@@ -9,15 +9,22 @@ layout: default
 <dd>谭钧豪</dd>
 <dt>出生于</dt>
 <dd>1994,中国,广东,开平</dd>
+<dt>毕业于</dt>
+<dd>金山中学,开侨中学,江西理工大学</dd>
+<dt>曾工作于</dt>
+<dd>横琴红包君信息技术有限公司,技术部</dd>
+<dd>珠海沃德尔软件科技有限公司,iOS研发</dd>
+<dt>现工作于</dt>
+<dd>中国南方电网,广东电网公司江门供电局</dd>
 </dl>
 
-### Small image
+### Cat s image
 
-![](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
+![](images/octocat.png)
 
-### Large image
+### Cat image
 
-![](https://guides.github.com/activities/hello-world/branching.png)
+![](images/cat.jpg)
 
 
 
