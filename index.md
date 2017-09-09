@@ -20,11 +20,11 @@ layout: default
 
 ### Cat s image
 
-![](assets/images/octocat.png)
+![](/TansPages/assets/images/octocat.png)
 
 ### Cat image
 
-![](assets/images/cat.jpg)
+![](/TansPages/assets/images/cat.jpg)
 
 
 
