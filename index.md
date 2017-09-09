@@ -20,11 +20,11 @@ layout: default
 
 ### Cat s image
 
-![](images/octocat.png)
+![](assets/images/octocat.png)
 
 ### Cat image
 
-![](images/cat.jpg)
+![](assets/images/cat.jpg)
 
 
 
