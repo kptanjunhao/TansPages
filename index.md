@@ -18,13 +18,13 @@ layout: default
 <dd>中国南方电网,广东电网公司江门供电局</dd>
 </dl>
 
-### Cat s image
+### Cat a image
 
-![](/TansPages/assets/images/octocat.png)
+![](http://ow0ly0xhu.bkt.clouddn.com/image/cat.jpg)
 
-### Cat image
+### Cat b image
 
-![](/TansPages/assets/images/cat.jpg)
+![](http://ow0ly0xhu.bkt.clouddn.com/image/octocat.png)
 
 
 
