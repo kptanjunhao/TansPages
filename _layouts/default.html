@@ -20,11 +20,11 @@
       {% endif %}
       <a href="{{ '/my_posts?v=' | append: site.github.build_revision | relative_url }}" class="btn">Posts</a>
       <p></p>
-      <a href="https://weibo.com/u/1902639291" target="_blank" class=""><img height="32px" src="/assets/icon/微博.png"></a>
-      <a href="#" onclick="showHideQR();" class=""><img height="32px" src="/assets/icon/微信.png"></a>
-      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=244296129&site=qq&menu=yes"><img height="28px" src="/assets/icon/qq.png" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+      <a href="https://weibo.com/u/1902639291" target="_blank" class=""><img height="32px" src="{{ '/assets/icon/微博.png' | relative_url }}"></a>
+      <a href="#" onclick="showHideQR();" class=""><img height="32px" src="{{ '/assets/icon/微信.png' | relative_url }}"></a>
+      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=244296129&site=qq&menu=yes"><img height="28px" src="{{ '/assets/icon/qq.png' | relative_url }}" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
       <div id="weqr" style="display:none">
-          <img width="100%" style="max-width:360px" src="/assets/icon/wechatqr.jpg">
+          <img width="100%" style="max-width:360px" src="{{ '/assets/icon/wechatqr.jpg' | relative_url }}">
         </div>
     </section>
     <script>
