@@ -58,17 +58,20 @@ welcome("Tan");
 >前面我们也讲到，模板都是通过使用layout里面的模板来渲染的，那么我们也需要在`_layout`下创建一个post模板，具体可以参照default的模板来修改
 ## 创建文章列表模板
 >我们已经做好了储存以及书写文章的准备，那么我们需要做一个列表来展示给访客来观看，我们一共有哪些文章。我们可以通过
-<% highlight ruby %>
-```<ul>
-{% for post in site.posts %}
-<li>
-<a href="/{{ site.github.repository_name | append: post.url }}">{{ post.title }}</a>
-</li>
-{% endfor %}
-</ul>
-```
-<% endhighlight %>  
-来获取文章列表并且展示出可点击标签。同样，文章列表的模板的名字你可以自行命名，只要新建一个`my_posts.md`，layout使用你的模板就可以了。只要在主页添加一个跳转，就可以跳转到文章列表了。
+
+>```html
+><ul>
+>  <li>
+>  {% raw %}{% for post in site.posts %}
+>    <a href="/{{ site.github.repository_name | append: post.url }}">{{ post.title }}</a>
+>    {{ post.excerpt }}
+>  {% endfor %}{% endraw %}
+>  </li>
+></ul>
+>```
+
+>来获取文章列表并且展示出可点击标签。同样，文章列表的模板的名字你可以自行命名，只要新建一个`my_posts.md`，layout使用你的模板就可以了。只要在主页添加一个跳转，就可以跳转到文章列表了。  
+
 # 更新到Github
 >修改完成以后，我们需要上传到Github的分支中。其实这里的顺序我都记得不太清楚，有错的大伙百度百度就OK。大概也就是这些步骤。建议使用另外一个文件夹进行git操作。  
 >首先初始化仓库  

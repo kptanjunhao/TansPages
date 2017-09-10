@@ -24,6 +24,7 @@
         {% for post in site.posts %}
         <li>
           <a href="/{{ site.github.repository_name | append: post.url }}">{{ post.title }}</a>
+          {{ post.excerpt }}
         </li>
         {% endfor %}
       </ul>
