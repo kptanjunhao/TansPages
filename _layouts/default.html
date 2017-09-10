@@ -18,7 +18,7 @@
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">查看我的 GitHub</a>
       {% endif %}
-      <a href="my_posts" class="btn">Posts</a>
+      <a href="{{ '/my_posts?v=' | append: site.github.build_revision | relative_url }}" class="btn">Posts</a>
     </section>
 
     <section class="main-content">

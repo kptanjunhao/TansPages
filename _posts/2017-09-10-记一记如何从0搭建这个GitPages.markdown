@@ -1,9 +1,29 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2017-09-09 21:15:11 +0800
-categories: jekyll update
+title:  "记一记如何从0搭建这个GitPages"
+date:   2017-09-10 08:21:11 +0800
+categories: technology
 ---
+{% highlight javascript %}
+let str = "Welcome";
+function welcome(name)
+{
+	console.log(str+" "+name+"!");
+}
+welcome("Tan");
+#=> prints 'Welcome Tan' to Console.
+{% endhighlight %}
+
+# 创建仓库
+
+首先登录自己的Github，创建一个仓库;  
+这里要注意仓库的名字，越简单越好，因为到时候如果没有自己的域名的话，GitPages的域名后面是带着你的仓库名的。  
+
+# 配置GitPages
+
+打开刚才创建的仓库，选择仓库的设置Settings;  
+
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
