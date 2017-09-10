@@ -11,7 +11,7 @@ function welcome(name)
 	console.log(str+" "+name+"!");
 }
 welcome("Tan");
-#=> prints 'Welcome Tan' to Console.
+#=> prints 'Welcome Tan!' to Console.
 {% endhighlight %}
 
 # 创建仓库
