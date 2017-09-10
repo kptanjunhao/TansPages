@@ -16,30 +16,81 @@ welcome("Tan");
 
 # 创建仓库
 
-首先登录自己的Github，创建一个仓库;  
+>首先登录自己的Github，创建一个仓库;  
 这里要注意仓库的名字，越简单越好，因为到时候如果没有自己的域名的话，GitPages的域名后面是带着你的仓库名的。  
 
 # 配置GitPages
 
-打开刚才创建的仓库，选择仓库的设置Settings;  
+>打开刚才创建的仓库，选择仓库的设置`Settings`;  
+往下翻到`GitHub Pages`,选择Github Pages展示的分支;  
+我创建了`gh-pages`分支专门用于储存这个站点，然后master用来展示一些信息。你也可以直接使用`master`来储存  
+选择了展示分支以后，你可以选择一些主题。  
+选择主题的同时，主题预览下方会看得到这个主题的Github，我们点进去。  
+把整个主题下载下来，我们就可以得到一个完整的jekyll的博客页面了。
 
+# 自定义主题及文件目录解析
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+>下载下来以后，我们需要对其中做一些自定义的修改。  
+## _layouts
+>`_layouts`目录下是站点的模板文件，我们使用的layout分类都是从这里读取模板。  如主题里面自带的default，就是我们的主页index进去使用的默认模板，你可以对它进行修改，也可以新建一个模板文件以供index使用。  
+## _sass
+>`_sass`存放的是jekyll一些样式类的文件，对H5有了解的童鞋应该都知道。  
+## assets
+>`assets`存放的是自定义的一些资源文件，如自己的css、font、小的image、js也都可以放在里面。  
+## script
+>`script`存放的是jekyll用到的脚本配置文件。
+## _config.yml 
+>`_config.yml`是一个配置文件，用来存放一些全局变量，也可以存放自定义的全局变量。  
+## Gemfile
+>或许是一些第三方库以及jekyll的编译配置文件？
+## xxx.md
+>这些md文件，都会自动生成一个页面，包括如果以后写博客的文章的markdown文件，也是会生成一个静态页面的。  
+>如果不指定分类，生成的页面就会在根目录下，如果指定了分类，生成的页面就会在分类的目录下。
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+# 博客列表
 
-Jekyll also offers powerful support for code snippets:
+>如果我们只要简要的展示一些信息，以上模板是足够的。  
+但是如果我们想要写博文，那么还是不够的。  
+## 存放文章
+>我们需要添加一个`_post`的目录，与`_layouts`平级。  
+`_post`目录中存放的都是这些以`YYYY-MM-DD-文章标题.后缀`来命名的文件，如文字所示，文章标题就是你写的每一篇博文的标题，都要在文件名上体现，因为到时候文章列表展示的就是这个名字。后缀就是书写的格式，例如我使用的是markdown，那么就用`.markdown`作为后缀。  
+## 创建文章模板
+>前面我们也讲到，模板都是通过使用layout里面的模板来渲染的，那么我们也需要在`_layout`下创建一个post模板，具体可以参照default的模板来修改
+## 创建文章列表模板
+>我们已经做好了储存以及书写文章的准备，那么我们需要做一个列表来展示给访客来观看，我们一共有哪些文章。我们可以通过
+<% highlight ruby %>
+```<ul>
+{% for post in site.posts %}
+<li>
+<a href="/{{ site.github.repository_name | append: post.url }}">{{ post.title }}</a>
+</li>
+{% endfor %}
+</ul>
+```
+<% endhighlight %>  
+来获取文章列表并且展示出可点击标签。同样，文章列表的模板的名字你可以自行命名，只要新建一个`my_posts.md`，layout使用你的模板就可以了。只要在主页添加一个跳转，就可以跳转到文章列表了。
+# 更新到Github
+>修改完成以后，我们需要上传到Github的分支中。其实这里的顺序我都记得不太清楚，有错的大伙百度百度就OK。大概也就是这些步骤。建议使用另外一个文件夹进行git操作。  
+>首先初始化仓库  
+>```git init```  
+>然后指定你的仓库地址  
+>```git remote add origin 你的github仓库地址```  
+>pull一下拉一下仓库的东西  
+>```git pull```  
+>查看你的远程分支  
+>```git branch -a```  
+>然后切换到你的分支(如果是master不用这一步)  
+>```git checkout 分支名 origin/分支名```  
+>然后把刚才修改的文件，如果不在这个目录的全部拉进来这个目录  
+>然后Git添加文件  
+>```git add .```  
+>然后添加提交信息  
+>```git commit -m "这里填写你的commit信息"```  
+>最后推送上去
+>```git push```  
+然后就可以愉快的登录你的Gayhub看一下你的主页是否完成了
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+制作的过程中，我们可以参考一下[Jekyll中文文档][jekyllcn-docs]，里面有挺详细的说明。如果英文比较好的同学可以直接参考[Jekyll docs][jekyll-docs]
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[jekyllcn-docs]: http://jekyll.com.cn/
