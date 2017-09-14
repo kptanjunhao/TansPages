@@ -37,6 +37,9 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 The final element.
 ```
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+Text can be **bold**, _italic_, or ~~strikethrough~~.  
 
-[Templet](templet).
+[鼠标单击速度检测](mouse_click).  
+
+[Templet](templet).  
+
