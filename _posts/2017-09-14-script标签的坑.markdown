@@ -1,0 +1,43 @@
+---
+layout: post
+title:  "script标签的坑"
+date:   2017-09-14 20:57:35 +0800
+categories: technology
+---
+{% highlight javascript %}
+<script src="/js/jquery.js" />
+<script>
+    function login(){
+        alert("Hello");
+    }
+</script>
+<button onclick="login();">Login</button>
+{% endhighlight %}
+
+# 问题
+
+>`script`标签到底能不能自闭和？
+>在Google Chrome 版本 60.0.3112.113（正式版本） （32 位）下
+>点击`Login`按钮无反应。
+
+
+# 调试
+>`function login()`中加入`console.log("Hello");`
+>控制台不打印，提示找不到`login()`这个函数
+
+# 分析
+>观察HTML代码，发现引入`jquery.js`的`script`标签把下面的`login()`函数也折叠起来了
+
+# 猜测
+>自闭合的script会一直找到下一个闭合标签才会闭合
+
+# 解决
+>{% highlight javascript %}
+><script src="/js/jquery.js" ></script>
+><script>
+>    function login(){
+>        alert("Hello");
+>    }
+></script>
+><button onclick="login();">Login</button>
+>{% endhighlight %}
