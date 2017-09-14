@@ -17,7 +17,7 @@ function btn_click(){
 	var val = parseInt(document.getElementById("count_btn").innerHTML);
 	document.getElementById("count_btn").innerHTML = 1 + val;
     var max = parseInt(document.getElementById("max_click").innerHTML);
-    if(val > max){
+    if(val >= max){
         document.getElementById("max_click").innerHTML = 1 + val;
     }
 }
