@@ -32,12 +32,13 @@ categories: technology
 >自闭合的script会一直找到下一个闭合标签才会闭合
 
 # 解决
->{% highlight javascript %}
-><script src="/js/jquery.js" ></script>
-><script>
->    function login(){
->        alert("Hello");
->    }
-></script>
-><button onclick="login();">Login</button>
->{% endhighlight %}
+>
+{% highlight javascript %}
+<script src="/js/jquery.js" ></script>
+<script>
+    function login(){
+        alert("Hello");
+    }
+</script>
+<button onclick="login();">Login</button>
+{% endhighlight %}
