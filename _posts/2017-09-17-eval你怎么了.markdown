@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "eval你怎么了"
+date:   2017-09-17 20:57:35 +0800
+categories: technology
+---
+{% highlight javascript %}
+    var resp = eval(evt.target.responseText);
+{% endhighlight %}
+
+# 问题
+
+>当服务器传来`{"msg":"一条信息","statu":true}`的时候  
+>在Google Chrome 版本 60.0.3112.113（正式版本） （32 位）下   
+
+>报错`Uncaught SyntaxError: Unexpected token : at XMLHttpRequest.uploadComplete (upload.js:229)`  
+>然后`upload.js:229`就是以上的代码
+
+# 分析
+>观察js代码，没发现什么问题啊;  
+>观察`console.log(evt.target.responseText)`  
+> #=> `{"msg": "一条信息","statu": true}`，没发现什么问题。
+
+# 百度
+>百度一下`eval Unexpected token :`  
+>找到了几篇文章  
+
+>[JS 里面的 eval() 函数的作用和报错之后的处理](http://blog.csdn.net/qq_27093465/article/details/49070347)  
+>[jquery eval解析JSON中的注意点介绍](http://www.jb51.net/article/40842.htm)
+
+
+# 解决
+>原来是因为json字符串里面的value的值里面包含：冒号  
+>所以在转化的时候出现错误。  
+>为什么要加括号？
+
+>加上圆括号的目的是迫使eval函数在评估JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，而不是作为语句（statement）来执行。
+举一个例子，例如对象字面量{}，如若不加外层的括号，那么eval会将大括号识别为JavaScript代码块的开始和结束标记，那么{}将会被认为是执行了一句空语句。所以下面两个执行结果是不同的：
+
+```
+alert(eval("{}");// return undefined
+alert(eval("({})");// return object[Object]
+```
+>
+{% highlight javascript %}
+    var resp = eval('('+evt.target.responseText+')');
+{% endhighlight %}
