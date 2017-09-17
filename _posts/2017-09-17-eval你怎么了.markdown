@@ -29,7 +29,7 @@ categories: technology
 >[jquery eval解析JSON中的注意点介绍](http://www.jb51.net/article/40842.htm)
 
 
-# 解决
+# 解析
 >原来是因为json字符串里面的value的值里面包含：冒号  
 >所以在转化的时候出现错误。  
 >为什么要加括号？
@@ -37,10 +37,12 @@ categories: technology
 >加上圆括号的目的是迫使eval函数在评估JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，而不是作为语句（statement）来执行。
 举一个例子，例如对象字面量{}，如若不加外层的括号，那么eval会将大括号识别为JavaScript代码块的开始和结束标记，那么{}将会被认为是执行了一句空语句。所以下面两个执行结果是不同的：
 
-```
-alert(eval("{}");// return undefined
-alert(eval("({})");// return object[Object]
-```
+>```
+>alert(eval("{}");// return undefined
+>alert(eval("({})");// return object[Object]
+>```
+
+# 解决
 >
 {% highlight javascript %}
     var resp = eval('('+evt.target.responseText+')');
